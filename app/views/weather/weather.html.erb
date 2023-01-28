@@ -1,6 +1,6 @@
 <%= form_tag("/weather", method: "get") do %>
   <%= label_tag(:location, "Enter your location:") %>
-  <%= text_field_tag(:location) %>
+  <%= text_field_tag :location, nil, placeholder: "Start typing a city name... ", id: "city" %>
   <%= submit_tag("Submit") %>
 <% end %>
 City: <%= @location %> <br/>
