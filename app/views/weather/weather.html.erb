@@ -3,7 +3,8 @@
   <%= text_field_tag(:location) %>
   <%= submit_tag("Submit") %>
 <% end %>
-
 City: <%= @location %> <br/>
 Temp:<%= @temperature %> <br/>
 Wind speed: <%= @wind %>
+
+<%= link_to "Go back", root_path %>

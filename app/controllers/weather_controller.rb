@@ -1,8 +1,13 @@
 class WeatherController < ApplicationController
+    def index
+
+    end
+    
     def weather
-        @location =  params[:location]
+        @location = params[:location] || "Warsaw" #if location is empty then return Warsaw 
         if @location.empty?
             flash[:error] = "Please enter a location."
+            flash.discard
         else
             begin
                 coordinates = Geocoder.coordinates(@location)
