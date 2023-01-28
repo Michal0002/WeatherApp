@@ -1,0 +1,9 @@
+<%= form_tag("/weather", method: "get") do %>
+  <%= label_tag(:location, "Enter your location:") %>
+  <%= text_field_tag(:location) %>
+  <%= submit_tag("Submit") %>
+<% end %>
+
+City: <%= @location %> <br/>
+Temp:<%= @temperature %> <br/>
+Wind speed: <%= @wind %>
