@@ -113,6 +113,7 @@ GEM
     faraday-retry (1.0.3)
     faraday_middleware (1.2.0)
       faraday (~> 1.0)
+    geocoder (1.8.1)
     globalid (1.1.0)
       activesupport (>= 5.0)
     hashie (5.0.0)
@@ -127,7 +128,6 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    json (2.6.3)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -160,8 +160,6 @@ GEM
       faraday (>= 1.0.0)
       faraday_middleware
       hashie
-    openweather2 (0.1.8)
-      json
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -250,10 +248,10 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
+  geocoder (~> 1.8, >= 1.8.1)
   importmap-rails
   jbuilder
   open-weather-ruby-client
-  openweather2
   puma (~> 5.0)
   rails (~> 7.0.4)
   selenium-webdriver
