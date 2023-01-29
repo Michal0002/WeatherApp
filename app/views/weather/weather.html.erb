@@ -2,18 +2,41 @@
   Loading...
 </div>
 
-<%= form_tag("/weather", method: "get") do %>
-  <%= label_tag(:location, "Enter your location:") %>
-  <%= text_field_tag :location, nil, placeholder: "Start typing a city name... ", id: "city" %> 
-  <%= submit_tag "Submit", onclick: "showLoadingScreen()" %>
-
-<% end %>
-City: <%= @location.humanize %> <br/> 
-Temp: <%= @temperature %> <br/>
-Wind speed: <%= @wind %> [mph] <br/>
-
-<%= link_to "Go back", root_path %>
-
 <%= javascript_include_tag "test" %>
 
+<section class="vh-100">
+  <div class="container py-5 h-100">
 
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-8 col-lg-6 col-xl-4">
+
+        <h3 class="mb-4 pb-2 fw-normal">Check the weather forecast</h3>
+
+        <div class="input-group rounded mb-3">
+          <%= form_tag("/weather", method: "get") do %>
+           <%= label_tag(:location, "Enter your location:") %>
+            <%= text_field_tag :location, nil, placeholder: "Start typing a city name... ", id: "city", class: "form-control rounded" %> <br/>
+             <%= submit_tag "Submit", onclick: "showLoadingScreen()", class: "input-group-text border-0 fw-bold" %>
+        <% end %>
+        </div>
+        <div class="card shadow-0 border">
+          <div class="card-body p-4">
+            <h4 class="mb-1 sfw-normal"><%= @location.capitalize %></h4>
+            <p class="mb-2">Current temperature: <strong><%= @temperature %></strong></p>
+            <p>Feels like: <strong><%= @temp_feels %> </strong></p>
+            <p>Max: <strong><%= @temp_max %></strong>, Min: <strong><%= @temp_min %> </strong></p>
+            <div class="d-flex flex-row align-items-center">
+              <p class="mb-0 me-4"><%= @weather_description %></p>
+              <% if @icon.present? %>
+              <%= image_tag @icon_url, width: "50px", height: "50px", class: "weather-icon" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+<%= link_to "Go back", root_path, class: "", class:"btn btn-light" %>
+      </div>
+    </div>
+
+  </div>
+  
+</section>

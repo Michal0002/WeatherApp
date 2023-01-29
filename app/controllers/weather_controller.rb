@@ -14,7 +14,13 @@ class WeatherController < ApplicationController
                 # coordinates = Geocoder.coordinates(@location)
                 client = OpenWeather::Client.new(api_key:"787c0a5f0ae4031bcdaec058cd2e5e2f")
                 weather = client.current_city(@location)
-                @temperature = weather.main.temp_max_c.round(1) 
+                @weather_description = weather['weather'][0]["main"]
+                @temperature = weather.main.temp_c.round(1)
+                @temp_feels = weather.main.feels_like_c.round(1)
+                @temp_min = weather.main.temp_min_c.round(1)
+                @temp_max = weather.main.temp_max_c.round(1)
+                @icon_code = weather["weather"][0]["icon"]
+                @icon_url = "http://openweathermap.org/img/wn/#{@icon_code}@2x.png"
                 @wind = weather.wind.speed
                 @presure = weather.main.pressure
 
@@ -24,9 +30,9 @@ class WeatherController < ApplicationController
               end
          end
     end
+    
     def fetch_cities_by_name(name)
         cities = ["New York", "Los Angeles", "Chicago", "Houston"]
         cities.select { |city| city.downcase.start_with?(name.downcase) }
     end
-    
 end

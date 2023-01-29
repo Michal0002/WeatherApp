@@ -5,3 +5,7 @@ import "controllers"
 //= require jquery_ujs
 //= require_tree .
 //= require loading_spinner
+
+//= require jquery3
+//= require popper
+//= require bootstrap
