@@ -4,3 +4,4 @@ import "controllers"
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require loading_spinner

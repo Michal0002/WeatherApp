@@ -1,10 +1,19 @@
+<div id="loading-screen" style="display: none">
+  Loading...
+</div>
+
 <%= form_tag("/weather", method: "get") do %>
   <%= label_tag(:location, "Enter your location:") %>
-  <%= text_field_tag :location, nil, placeholder: "Start typing a city name... ", id: "city" %>
-  <%= submit_tag("Submit") %>
+  <%= text_field_tag :location, nil, placeholder: "Start typing a city name... ", id: "city" %> 
+  <%= submit_tag "Submit", onclick: "showLoadingScreen()" %>
+
 <% end %>
-City: <%= @location %> <br/>
+City: <%= @location.humanize %> <br/> 
 Temp: <%= @temperature %> <br/>
 Wind speed: <%= @wind %> [mph] <br/>
 
 <%= link_to "Go back", root_path %>
+
+<%= javascript_include_tag "test" %>
+
+
