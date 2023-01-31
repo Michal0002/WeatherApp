@@ -1,24 +1,9 @@
-# README
+# README WtwApp
+What's the weather applicaiton
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple weather application created using HTML,CSS and Javascript and the Openweathermap API
 
-Things you may want to cover:
+With this application, we can enter the city and then receive basic information about the weather in a given city, i.e. felt temperature, minimum and maximum temperature during the day, wind speed ...
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+I am still working on features:
+- forecast data 
