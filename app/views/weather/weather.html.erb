@@ -1,8 +1,12 @@
 <div id="loading-screen" style="display: none">
   Loading...
 </div>
-
-<%= javascript_include_tag "test" %>
+<%
+=begin%>
+ <%= javascript_include_tag "suggestions" %>
+<%= javascript_include_tag "loading" %> 
+<%
+=end%>
 
 <section class="vh-100">
   <div class="container py-5 h-100">
@@ -15,7 +19,8 @@
         <div class="input-group rounded mb-3">
           <%= form_tag("/weather", method: "get") do %>
            <%= label_tag(:location, "Enter your location:") %>
-            <%= text_field_tag :location, nil, placeholder: "Start typing a city name... ", id: "city", class: "form-control rounded" %> <br/>
+            <ul id="suggestion-list"></ul>
+            <%= text_field_tag :location, nil, placeholder: "Start typing a city name... ", id: "location-input" , class: "form-control rounded" %> <br/>
              <%= submit_tag "Submit", onclick: "showLoadingScreen()", class: "input-group-text border-0 fw-bold" %>
         <% end %>
         </div>
@@ -27,11 +32,11 @@
             <p>Max: <strong><%= @temp_max %></strong>, Min: <strong><%= @temp_min %> </strong></p>
             <div class="d-flex flex-row align-items-center">
               <p class="mb-0 me-4"><%= @weather_description %></p>
-              <% if @icon.present? %>
+              <% if @icon_url.present? %>
               <%= image_tag @icon_url, width: "50px", height: "50px", class: "weather-icon" %>
               <% end %>
             </div>
-          </div>
+            </div>
         </div>
 <%= link_to "Go back", root_path, class: "", class:"btn btn-light" %>
       </div>
@@ -40,3 +45,12 @@
   </div>
   
 </section>
+<script> 
+$(document).ready(function(){
+  $("button").click(function(){
+    $("div").animate({
+      height: 'toggle'
+    });
+  });
+});
+</script> 

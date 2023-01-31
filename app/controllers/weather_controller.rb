@@ -4,13 +4,13 @@ class WeatherController < ApplicationController
     end
     
     def weather
+        
         @location = params[:location] || "Warsaw" #location is empty then return Warsaw 
         if @location.empty?
             flash[:error] = "Please enter a location."
             flash.discard
          else
             begin
-                cities = fetch_cities_by_name(@location)
                 # coordinates = Geocoder.coordinates(@location)
                 client = OpenWeather::Client.new(api_key:"787c0a5f0ae4031bcdaec058cd2e5e2f")
                 weather = client.current_city(@location)
@@ -30,9 +30,11 @@ class WeatherController < ApplicationController
               end
          end
     end
-    
-    def fetch_cities_by_name(name)
-        cities = ["New York", "Los Angeles", "Chicago", "Houston"]
-        cities.select { |city| city.downcase.start_with?(name.downcase) }
+
+    def suggestions
+    suggestions = Geocoder.search(params[:location]).map(&:city)
+    render json: suggestions
     end
+      
+    
 end
